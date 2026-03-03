@@ -1,37 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checklist Flexo</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .checklist {
+            margin: 20px;
+        }
+        .section {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-    <header>
+    <div class="checklist">
         <h1>Checklist Flexo</h1>
-    </header>
-    <main>
-        <form id="checklistForm">
-            <section>
-                <h2>Section 1</h2>
-                <label for="item1">Item 1:</label>
-                <input type="checkbox" id="item1" name="item1">
-                <label for="item2">Item 2:</label>
-                <input type="checkbox" id="item2" name="item2">
-            </section>
-            <section>
-                <h2>Section 2</h2>
-                <label for="item3">Item 3:</label>
-                <input type="checkbox" id="item3" name="item3">
-                <label for="item4">Item 4:</label>
-                <input type="checkbox" id="item4" name="item4">
-            </section>
-            <button type="submit">Submit</button>
-        </form>
-    </main>
-    <footer>
-        <p>&copy; 2026 Checklist Flexo. All rights reserved.</p>
-    </footer>
+        <div class="section">
+            <h2>Section 1</h2>
+            <input type="checkbox" id="item1"><label for="item1">Item 1</label><br>
+            <input type="checkbox" id="item2"><label for="item2">Item 2</label><br>
+        </div>
+        <div class="section">
+            <h2>Section 2</h2>
+            <input type="checkbox" id="item3"><label for="item3">Item 3</label><br>
+            <input type="checkbox" id="item4"><label for="item4">Item 4</label><br>
+        </div>
+        <button id="submit">Submit</button>
+    </div>
+    <script>
+        document.getElementById('submit').onclick = function() {
+            alert('Checklist submitted!');
+        };
+    </script>
 </body>
 </html>
