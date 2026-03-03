@@ -1,0 +1,1 @@
+{"name": "checklist-flexo", "version": "1.0.0", "description": "Checklist Flexo Project", "main": "index.js", "scripts": { "test": "echo 'Error: no test specified' && exit 1" }, "repository": { "type": "git", "url": "https://github.com/rodolfomoscosoyepez-alt/checklist-flexo-dobliu.git" }, "author": "rodolfomoscosoyepez-alt", "license": "MIT"}
