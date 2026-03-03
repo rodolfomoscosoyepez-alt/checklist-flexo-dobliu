@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Checklist Flexo — by Dobliu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Checklist Flexo General — Control de calidad de arte para flexografía. Hecho para Nathalia Nicole Barroso Moscoso. by Dobliu." />
+  <link rel="icon" href="/favicon.png" />
+  <style>
+    :root { --bg:#0b0e14; --card:#10151f; --muted:#aab3c2; --text:#f2f5fb; --primary:#8b5cf6; --accent:#eab308; --ok:#32d19c; --warn:#ffb020; --border:#1a2233; }
+    *{box-sizing:border-box} html,body{height:100%} body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Noto Sans,Ubuntu,Cantarell,Helvetica Neue,Arial,Apple Color Emoji,Segoe UI Emoji;background:radial-gradient(1200px 800px at 10% 0%,#0f1422,var(--bg));color:var(--text)}
+    header{padding:28px 16px 8px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,0));border-bottom:1px solid var(--border)}
+    header .brand{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:999px;border:1px solid rgba(234,179,8,.35);background:linear-gradient(180deg,rgba(234,179,8,.10),rgba(234,179,8,.04));color:#ffd86b;font-weight:700;letter-spacing:.4px;font-size:12px;text-transform:uppercase}
+    header h1{margin:10px 0 6px;font-size:28px;letter-spacing:.3px} header p{margin:0;color:var(--muted);font-size:14px} .owner{margin-top:8px;font-size:12px;color:#cbd5e1}
+    .container{max-width:1000px;margin:18px auto 80px;padding:0 16px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));border:1px solid var(--border);border-radius:16px;padding:18px 16px;box-shadow:0 10px 28px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.03);margin-bottom:16px}
+    .grid{display:grid;gap:12px} .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))} @media(max-width:800px){.grid.cols-2{grid-template-columns:1fr}}
+    label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+    input[type=text],input[type=date],input[type=number],textarea,select{width:100%;padding:12px;background:#0f1729;color:var(--text);border:1px solid var(--border);border-radius:12px;outline:none;transition:border-color .2s ease,box-shadow .2s ease}
+    input:focus,textarea:focus{border-color:#334155;box-shadow:0 0 0 3px rgba(139,92,246,.2)} textarea{min-height:90px;resize:vertical}
+    .section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px} .section-title h2{font-size:18px;margin:0} .tag{font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted)}
+    .btn{background:linear-gradient(180deg,#1a2440,#141e36);color:var(--text);border:1px solid var(--border);padding:10px 14px;border-radius:12px;cursor:pointer;font-weight:700;font-size:13px;transition:transform .08s ease,background .2s ease,border-color .2s ease,box-shadow .2s ease;letter-spacing:.2px}
+    .btn:hover{transform:translateY(-1px);border-color:#2d3a5e;box-shadow:0 6px 18px rgba(0,0,0,.25)} .btn.primary{background:linear-gradient(180deg,#7c3aed,#5b21b6);border-color:#5b21b6} .btn.ok{background:linear-gradient(180deg,#16a34a,#15803d);border-color:#15803d} .btn.warn{background:linear-gradient(180deg,#c07d13,#a5670f);border-color:#7f5211} .btn.ghost{background:transparent}
+    .pill{padding:4px 8px;border-radius:999px;background:rgba(139,92,246,.12);color:var(--primary);border:1px solid rgba(139,92,246,.25);font-size:12px}
+    .chk{display:grid;grid-template-columns:24px 1fr;gap:12px;align-items:start;padding:12px;border:1px dashed var(--border);border-radius:14px;background:rgba(255,255,255,.02)} .chk input[type=checkbox]{width:18px;height:18px;margin-top:2px}
+    .section{border:1px solid var(--border);border-radius:14px;padding:12px;margin-bottom:14px;background:rgba(234,179,8,.03)} .section-header{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:8px;padding-bottom:8px;border-bottom:1px dashed var(--border)}
+    .muted{color:var(--muted);font-size:12px} .kpi{display:flex;gap:10px;align-items:center;font-size:12px;color:var(--muted)} .kpi .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);display:inline-block}
+    .progress{height:10px;background:#0f1729;border:1px solid var(--border);border-radius:999px;overflow:hidden} .progress>div{height:100%;background:linear-gradient(90deg,var(--accent),#a78bfa,#22d3ee);width:0%;transition:width .2s ease}
+    .footer-actions{position:sticky;bottom:0;z-index:10;background:rgba(11,14,20,.92);backdrop-filter:blur(6px);border-top:1px solid var(--border);padding:12px 16px;display:flex;gap:8px;flex-wrap:wrap}
+    .summary{white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px}
+    @media print{.footer-actions{display:none} header,.card,.section{box-shadow:none!important} body{background:#fff;color:#000} a,.btn{display:none} .section{break-inside:avoid}}
+  </style>
+</head>
+<body>
+  <header>
+    <span class="brand">Checklist Flexo — by Dobliu</span>
+    <h1>Control de Calidad de Arte para Flexografía</h1>
+    <p>Marca cada “visto” mientras revisas. Genera PDF o exporta JSON.</p>
+    <div class="owner">Hecho para <strong>Nathalia Nicole Barroso Moscoso</strong></div>
+  </header>
+  <div class="container">
+    <div class="card">
+      <div class="section-title"><h2>Datos del trabajo</h2><span class="tag">Requerido</span></div>
+      <div class="grid cols-2">
+        <div><label>Proyecto / SKU</label><input type="text" id="proyecto" placeholder="Ej. Bolsa Café 250g – Nueva imagen" required /></div>
+        <div><label>Cliente / Marca</label><input type="text" id="cliente" placeholder="Ej. Don Café" required /></div>
+        <div><label>N° de Orden / OT</label><input type="text" id="orden" placeholder="Ej. OT-2026-00345" /></div>
+        <div><label>Responsable</label><input type="text" id="responsable" placeholder="Nombre y cargo" /></div>
+        <div><label>Fecha</label><input type="date" id="fecha" /></div>
+        <div><label>Cantidad de colores (tintas)</label><input type="number" id="tintas" min="1" max="12" placeholder="Ej. 6" /></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="section-title"><h2>Progreso</h2><span class="pill" id="countPill">0 / 0</span></div>
+      <div class="progress"><div id="progressBar"></div></div>
+      <div class="kpi" style="margin-top:8px;"><span class="dot"></span><span id="kpiText">Aún no hay checks.</span></div>
+    </div>
+    <div id="sections"></div>
+    <div class="card">
+      <div class="section-title"><h2>Resumen</h2><span class="tag">Se actualiza al enviar</span></div>
+      <div id="summary" class="summary muted">Sin datos aún.</div>
+    </div>
+  </div>
+  <div class="footer-actions">
+    <button class="btn ghost" id="markAll">Marcar todo OK en esta sección</button>
+    <button class="btn" id="clearSection">Limpiar sección actual</button>
+    <span class="muted" id="currentSectionLabel">Sección: —</span>
+    <div style="flex:1"></div>
+    <button class="btn" id="saveDraft">Guardar borrador</button>
+    <button class="btn warn" id="clearDraft">Borrar borrador</button>
+    <button class="btn" id="exportJSON">Exportar JSON</button>
+    <button class="btn primary" id="printPDF">Generar PDF</button>
+    <button class="btn ok" id="submit">Enviar / Finalizar</button>
+  </div>
+  <script>
+    const MODEL=[
+      {title:"1. DIELINE / PLANO",notes:true,items:["Dieline correcto y actualizado","Medidas finales verificadas","Hendidos, cortes y perforaciones bien ubicados","Zonas no imprimibles marcadas"]},
+      {title:"2. ARCHIVO",notes:true,items:["Archivo AI + PDF/X limpio","Tipografías convertidas a curvas","Imágenes incrustadas o vinculadas correctamente","Resolución mínima 300 dpi","Sin transparencias ni efectos problemáticos","Capas ordenadas: dieline / arte / blanco / barniz / troquel / notas"]},
+      {title:"3. COLOR",notes:true,items:["Colores definidos en CMYK / Pantone / GCMI","Cantidad de colores correcta (según orden)","Overprint revisado (negro pequeño en sobreimpresión)","Trapping aplicado en todos los colores necesarios"]},
+      {title:"4. TIPOGRAFÍA Y LÍNEAS",notes:true,items:["Tamaños mínimos de texto respetados","Líneas en grosor mínimo adecuado","Evitar textos invertidos demasiado pequeños"]},
+      {title:"5. ZONAS CRÍTICAS",notes:true,items:["No hay elementos sobre hendidos, ranuras o dobleces","Evitar colocar arte sobre la pestaña de pegado (si aplica)","Márgenes de seguridad respetados (3–5 mm)"]},
+      {title:"6. TROQUEL (SI APLICA)",notes:true,items:["Troquel coincide con el arte","Ventanas, cortes y scrap correctamente indicados"]},
+      {title:"7. ELEMENTOS ESPECIALES",notes:true,items:["Barniz separado en capa independiente","Blanco de apoyo separado en capa independiente","Hot stamping / foil / relieves correctamente señalados"]},
+      {title:"8. MARCAS Y CONTROL",notes:true,items:["Marcas de registro incluidas","Barras de color incluidas","Guías y flechas de orientación","Sentido de impresión especificado"]},
+      {title:"9. CONTENIDO",notes:true,items:["Datos revisados (textos, teléfonos, códigos, ingredientes, etc.)","Códigos de barras legibles y en tamaño correcto"]},
+      {title:"10. ENTREGA DEL PAQUETE",notes:true,items:["Carpeta final organizada","AI + PDF finales incluidos","Planos actualizados incluidos","Notas técnicas incluidas"]}
+    ];
+    const sectionsRoot=document.getElementById('sections'); let allCheckboxes=[]; let currentSectionIndex=0;
+    function render(){sectionsRoot.innerHTML=''; allCheckboxes=[]; MODEL.forEach((sec,sIdx)=>{const secEl=document.createElement('div'); secEl.className='section'; secEl.dataset.index=sIdx; const header=document.createElement('div'); header.className='section-header'; header.innerHTML=`<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;"><h3 style="margin:0;font-size:16px;">${sec.title}</h3><span class="muted">(marca todos los que apliquen)</span></div><div class="kpi"><span class="muted">Completados:</span> <span class="pill" id="s-pill-${sIdx}">0 / ${sec.items.length}</span></div>`; secEl.appendChild(header); sec.items.forEach((label,iIdx)=>{const row=document.createElement('label'); row.className='chk'; const id=`s${sIdx}i${iIdx}`; row.innerHTML=`<input type="checkbox" id="${id}"><div><strong>[ ]</strong> ${label}</div>`; secEl.appendChild(row); const cb=row.querySelector('input[type="checkbox"]'); allCheckboxes.push(cb); cb.addEventListener('change',()=>{updateSectionPill(sIdx); updateProgress(); autosave();});}); const notes=document.createElement('div'); notes.style.marginTop='8px'; notes.innerHTML=`<label>Notas / observaciones de la sección</label><textarea id="notes-${sIdx}" placeholder="Anota hallazgos, excepciones o instrucciones."></textarea>`; secEl.appendChild(notes); notes.querySelector('textarea').addEventListener('input', autosave); sectionsRoot.appendChild(secEl);}); updateAllPills(); updateProgress(); updateCurrentSectionLabel(); loadDraft();}
+    function updateSectionPill(index){const sec=MODEL[index]; const start=MODEL.slice(0,index).reduce((acc,s)=>acc+s.items.length,0); const end=start+sec.items.length; const chks=allCheckboxes.slice(start,end); const done=chks.filter(c=>c.checked).length; const pill=document.getElementById(`s-pill-${index}`); if(pill)pill.textContent=`${done} / ${sec.items.length}`;}
+    function updateAllPills(){MODEL.forEach((_,i)=>updateSectionPill(i));}
+    function updateProgress(){const total=allCheckboxes.length; const done=allCheckboxes.filter(c=>c.checked).length; const pct=total?Math.round((done/total)*100):0; document.getElementById('progressBar').style.width=pct+'%'; document.getElementById('kpiText').textContent=pct===0?'Aún no hay checks.':pct<100?`Progreso: ${pct}%`:'¡Checklist completado! ✅'; document.getElementById('countPill').textContent=`${done} / ${total}`;}
+    function updateCurrentSectionLabel(){const label=document.getElementById('currentSectionLabel'); label.textContent='Sección: '+(MODEL[currentSectionIndex]?.title??'—');}
+    document.getElementById('markAll').addEventListener('click',()=>{const idx=currentSectionIndex; const sec=MODEL[idx]; const start=MODEL.slice(0,idx).reduce((acc,s)=>acc+s.items.length,0); const end=start+sec.items.length; allCheckboxes.slice(start,end).forEach(c=>c.checked=true); updateSectionPill(idx); updateProgress(); autosave();});
+    document.getElementById('clearSection').addEventListener('click',()=>{const idx=currentSectionIndex; const sec=MODEL[idx]; const start=MODEL.slice(0,idx).reduce((acc,s)=>acc+s.items.length,0); const end=start+sec.items.length; allCheckboxes.slice(start,end).forEach(c=>c.checked=false); const notesEl=document.getElementById('notes-'+idx); if(notesEl)notesEl.value=''; updateSectionPill(idx); updateProgress(); autosave();});
+    document.addEventListener('click',(e)=>{const sec=e.target.closest('.section'); if(sec){currentSectionIndex=Number(sec.dataset.index); updateCurrentSectionLabel();}});
+    const DRAFT_KEY='checklist_flexo_dobliu_v1';
+    function getFormData(){const meta={proyecto:document.getElementById('proyecto').value.trim(),cliente:document.getElementById('cliente').value.trim(),orden:document.getElementById('orden').value.trim(),responsable:document.getElementById('responsable').value.trim(),fecha:document.getElementById('fecha').value,tintas:document.getElementById('tintas').value,brand:'Dobliu',owner:'Nathalia Nicole Barroso Moscoso'}; const sections=MODEL.map((sec,sIdx)=>{const start=MODEL.slice(0,sIdx).reduce((a,s)=>a+s.items.length,0); const end=start+sec.items.length; const items=allCheckboxes.slice(start,end).map((c,i)=>({label:sec.items[i],ok:c.checked})); const notesEl=document.getElementById('notes-'+sIdx); return{title:sec.title,items,notes:notesEl?notesEl.value:''};}); return{meta,sections,timestamp:new Date().toISOString()};}
+    function autosave(){const data=getFormData(); localStorage.setItem(DRAFT_KEY, JSON.stringify(data));}
+    function loadDraft(){const raw=localStorage.getItem(DRAFT_KEY); if(!raw)return; try{const data=JSON.parse(raw); const m=data.meta||{}; document.getElementById('proyecto').value=m.proyecto||''; document.getElementById('cliente').value=m.cliente||''; document.getElementById('orden').value=m.orden||''; document.getElementById('responsable').value=m.responsable||''; if(m.fecha)document.getElementById('fecha').value=m.fecha; if(m.tintas)document.getElementById('tintas').value=m.tintas; (data.sections||[]).forEach((sec,sIdx)=>{const start=MODEL.slice(0,sIdx).reduce((a,s)=>a+s.items.length,0); (sec.items||[]).forEach((it,i)=>{const cb=allCheckboxes[start+i]; if(cb)cb.checked=!!it.ok;}); const notesEl=document.getElementById('notes-'+sIdx); if(notesEl)notesEl.value=sec.notes||'';}); updateAllPills(); updateProgress();}catch(e){console.warn('No se pudo cargar borrador',e);}}
+    document.getElementById('saveDraft').addEventListener('click',()=>{autosave(); alert('Borrador guardado en este navegador.');});
+    document.getElementById('clearDraft').addEventListener('click',()=>{if(confirm('¿Borrar borrador guardado en este navegador?')){localStorage.removeItem(DRAFT_KEY); location.reload();}});
+    document.getElementById('exportJSON').addEventListener('click',()=>{const data=getFormData(); const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); const sku=data.meta.proyecto?.replace(/\s+/g,'_').slice(0,60)||'checklist'; a.href=url; a.download=`${sku}_flexo_checklist.json`; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);});
+    document.getElementById('printPDF').addEventListener('click',()=>{window.print();});
+    document.getElementById('submit').addEventListener('click',()=>{const proyecto=document.getElementById('proyecto').value.trim(); const cliente=document.getElementById('cliente').value.trim(); if(!proyecto||!cliente){alert('Completa al menos Proyecto y Cliente.'); return;} const data=getFormData(); const pendientes=[]; data.sections.forEach(sec=>{sec.items.forEach(it=>{if(!it.ok)pendientes.push(`- ${sec.title}: ${it.label}`);});}); const summaryEl=document.getElementById('summary'); let txt=`Proyecto: ${data.meta.proyecto}
+Cliente: ${data.meta.cliente}
+Orden: ${data.meta.orden||'-'}
+Responsable: ${data.meta.responsable||'-'}
+Fecha: ${data.meta.fecha||(new Date()).toISOString().slice(0,10)}
+Tintas: ${data.meta.tintas||'-'}
+
+`; if(pendientes.length===0){txt+='✅ Todo OK: no hay pendientes.
+';} else {txt+='⚠ Pendientes:
+'+pendientes.join('
+')+'
+';} const notas=data.sections.map(s=>s.notes?.trim()?`• ${s.title} → ${s.notes.trim()}`:'').filter(Boolean).join('
+'); if(notas){txt+='
+📝 Notas:
+'+notas+'
+';} summaryEl.textContent=txt; summaryEl.classList.remove('muted'); autosave(); alert('Resumen actualizado. Puedes imprimir/guardar como PDF o exportar JSON.');});
+    render(); const f=document.getElementById('fecha'); if(!f.value){const today=new Date(); const pad=n=>n.toString().padStart(2,'0'); f.value=`${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;}
+  </script>
+</body>
+</html>
